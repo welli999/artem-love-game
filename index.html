@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Для Артёма 💗</title>
+<style>
+body {
+  background: linear-gradient(135deg, #ffe1ed, #e8dfff);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #783d61;
+  padding: 35px 15px;
+}
+.card {
+  background: white;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 28px 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px #c58ca655;
+}
+h1 { color: #e36b9a; }
+button {
+  background: #ed8bb2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 22px;
+  margin: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#message { line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div style="font-size:45px">💗</div>
+  <h1>Для моего Артёма</h1>
+  <p id="message">
+    Привет, любимый! Я приготовила
+    для тебя маленький сюрприз.
+    Готов его открыть? 🥹
+  </p>
+  <button id="next" onclick="nextStep()">
+    Открыть сюрприз 💌
+  </button>
+</div>
+
+<script>
+const steps = [
+  ["💌", "Первый вопрос", 
+   "Знаешь, почему ты для меня особенный?"],
+  ["🌷", "Маленький секрет",
+   "Потому что рядом с тобой даже обычный день становится особенным."],
+  ["❤️", "Моё признание",
+   "Артём, я очень сильно тебя люблю! Спасибо, что ты есть в моей жизни. Ты занимаешь особенное место в моём сердце."],
+  ["💞", "Конец? Нет!",
+   "Это только маленькая часть того, что я хочу тебе сказать. Я люблю тебя! 💗"]
+];
+let step = -1;
+
+function nextStep() {
+  step++;
+  if (step >= steps.length) step = steps.length - 1;
+  document.querySelector("#message").innerHTML =
+    "<span style='font-size:35px'>" + steps[step][0] +
+    "</span><br><b>" + steps[step][1] +
+    "</b><br><br>" + steps[step][2];
+  if (step === steps.length - 1) {
+    document.querySelector("#next").textContent =
+      "Прочитать ещё раз 💗";
+    document.querySelector("#next").onclick = () => {
+      step = -1;
+      nextStep();
+    };
+  }
+}
+</script>
+</body>
+</html>
